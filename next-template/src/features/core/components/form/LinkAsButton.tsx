@@ -1,12 +1,12 @@
 import Link, { LinkProps } from 'next/link';
 import { AnchorHTMLAttributes, ReactNode, forwardRef } from 'react';
-import { buttonClassName } from './Button';
+import { ButtonIntent, buttonClassName } from './Button';
 import { cn } from '@utils/cn';
 
 type LinkButtonProps = LinkProps &
 	Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'children' | 'href'> & {
 		children?: ReactNode;
-		intent?: 'primary' | 'secondary' | 'danger';
+		intent?: ButtonIntent;
 		variant?: 'filled' | 'outlined' | 'ghost';
 		size?: 'sm' | 'md' | 'lg';
 		leftIcon?: ReactNode;

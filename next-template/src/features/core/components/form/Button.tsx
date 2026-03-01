@@ -2,9 +2,9 @@ import { ComponentPropsWithoutRef, ReactNode, forwardRef } from 'react';
 import { LoadingIndicator } from '@core/components/feedback/LoadingIndicator';
 import { cn } from '@utils/cn';
 
-type ButtonIntent = 'primary' | 'secondary' | 'danger';
-type ButtonVariant = 'filled' | 'outlined' | 'ghost';
-type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonIntent = 'primary' | 'secondary' | 'tertiary' | 'danger';
+export type ButtonVariant = 'filled' | 'outlined' | 'ghost';
+export type ButtonSize = 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends Omit<
 	ComponentPropsWithoutRef<'button'>,
