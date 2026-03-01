@@ -18,17 +18,33 @@ export function StyleguideBadge({
 	children: React.ReactNode;
 	variant?: StyleguideBadgeVariant;
 }) {
-	const variants: Record<StyleguideBadgeVariant, string> = {
-		neutral: 'bg-neutral-100 text-neutral-600',
-		brand: 'bg-primary-100 text-primary-700',
-		success: 'bg-green-100 text-green-700',
-		warning: 'bg-amber-100 text-amber-700',
-		danger: 'bg-red-100 text-red-700',
+	const variants: Record<StyleguideBadgeVariant, React.CSSProperties> = {
+		neutral: {
+			backgroundColor: 'color-mix(in srgb, var(--color-border) 70%, var(--color-surface))',
+			color: 'var(--color-muted)',
+		},
+		brand: {
+			backgroundColor: 'color-mix(in srgb, var(--color-brand) 14%, transparent)',
+			color: 'var(--color-brand)',
+		},
+		success: {
+			backgroundColor: 'color-mix(in srgb, var(--color-success-500) 14%, transparent)',
+			color: 'var(--color-success-500)',
+		},
+		warning: {
+			backgroundColor: 'color-mix(in srgb, var(--color-warning-500) 14%, transparent)',
+			color: 'var(--color-warning-500)',
+		},
+		danger: {
+			backgroundColor: 'color-mix(in srgb, var(--color-danger) 14%, transparent)',
+			color: 'var(--color-danger)',
+		},
 	};
 
 	return (
 		<span
-			className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold tracking-wider uppercase ${variants[variant]}`}
+			className='inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold tracking-wider uppercase'
+			style={variants[variant]}
 		>
 			{children}
 		</span>
@@ -37,22 +53,22 @@ export function StyleguideBadge({
 
 export function StyleguideColorSwatch({
 	name,
-	value,
+	token,
 	description,
 }: {
 	name: string;
-	value: string;
+	token: string;
 	description?: string;
 }) {
 	return (
 		<div className='group border-border/50 bg-surface hover:border-brand/30 flex items-center gap-4 rounded-xl border p-4 transition-all hover:shadow-md'>
 			<div
 				className='h-14 w-14 shrink-0 rounded-lg shadow-sm ring-1 ring-black/5 transition-transform group-hover:scale-110'
-				style={{ backgroundColor: value }}
+				style={{ backgroundColor: `var(${token})` }}
 			/>
 			<div className='flex flex-col gap-1'>
 				<p className='label text-foreground'>{name}</p>
-				<code className='caption text-muted font-mono'>{value}</code>
+				<code className='caption text-muted font-mono'>{token}</code>
 				{description ? (
 					<p className='caption text-muted/70'>{description}</p>
 				) : null}
@@ -78,7 +94,15 @@ export function StyleguideSection({
 		<section className='group space-y-8'>
 			<div className='flex flex-col gap-4'>
 				<div className='flex items-center gap-3'>
-					<div className='from-primary-500 to-primary-600 shadow-primary-500/20 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-lg'>
+					<div
+						className='flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg'
+						style={{
+							backgroundImage:
+								'linear-gradient(to bottom right, var(--color-brand), var(--color-brand-hover))',
+							boxShadow:
+								'0 20px 40px color-mix(in srgb, var(--color-brand) 20%, transparent)',
+						}}
+					>
 						<Icon size={24} weight='duotone' />
 					</div>
 					<div className='flex flex-col gap-1'>
@@ -90,7 +114,13 @@ export function StyleguideSection({
 					</div>
 				</div>
 			</div>
-			<div className='border-border/50 from-surface group-hover:border-brand/20 rounded-3xl border bg-gradient-to-br to-neutral-50/50 p-8 shadow-xl shadow-black/5 backdrop-blur-sm transition-all lg:p-12'>
+			<div
+				className='border-border/50 group-hover:border-brand/20 rounded-3xl border p-8 shadow-xl shadow-black/5 backdrop-blur-sm transition-all lg:p-12'
+				style={{
+					backgroundImage:
+						'linear-gradient(to bottom right, var(--color-surface), color-mix(in srgb, var(--color-background) 84%, white))',
+				}}
+			>
 				{children}
 			</div>
 		</section>

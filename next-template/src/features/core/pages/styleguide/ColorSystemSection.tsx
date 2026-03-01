@@ -1,129 +1,198 @@
-import { Palette } from '@phosphor-icons/react/dist/ssr';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { Palette } from '@phosphor-icons/react';
 import {
 	StyleguideBadge,
 	StyleguideColorSwatch,
 	StyleguideSection,
 } from './StyleguidePrimitives';
 
-const neutralStops = [
-	'50',
-	'100',
-	'200',
-	'300',
-	'400',
-	'500',
-	'600',
-	'700',
-	'800',
-	'900',
-];
+type PaletteFamily = {
+	name: string;
+	tokens: string[];
+};
+
+const ROLE_COLOR_VARIABLES = new Set([
+	'background',
+	'surface',
+	'foreground',
+	'muted',
+	'border',
+	'brand',
+	'brand-hover',
+	'accent',
+	'accent-hover',
+	'danger',
+	'danger-hover',
+	'on-brand',
+	'on-accent',
+	'on-danger',
+	'input',
+	'input-border',
+	'focus-ring',
+]);
+
+const CORE_ROLE_SWATCHES = [
+	{
+		name: 'Brand',
+		token: '--color-brand',
+		description: 'Primary action color',
+	},
+	{
+		name: 'Brand Hover',
+		token: '--color-brand-hover',
+		description: 'Primary hover state',
+	},
+	{
+		name: 'Accent',
+		token: '--color-accent',
+		description: 'Secondary action color',
+	},
+	{
+		name: 'Accent Hover',
+		token: '--color-accent-hover',
+		description: 'Secondary hover state',
+	},
+	{
+		name: 'Danger',
+		token: '--color-danger',
+		description: 'Destructive actions',
+	},
+	{
+		name: 'Focus Ring',
+		token: '--color-focus-ring',
+		description: 'Accessible focus indicator',
+	},
+] as const;
+
+function sortTokenNames(left: string, right: string): number {
+	const leftNumber = Number(left);
+	const rightNumber = Number(right);
+
+	if (!Number.isNaN(leftNumber) && !Number.isNaN(rightNumber)) {
+		return leftNumber - rightNumber;
+	}
+
+	if (!Number.isNaN(leftNumber)) {
+		return -1;
+	}
+
+	if (!Number.isNaN(rightNumber)) {
+		return 1;
+	}
+
+	return left.localeCompare(right);
+}
+
+function formatFamilyName(name: string): string {
+	return name
+		.split('-')
+		.map((segment) =>
+			segment.length > 0 ? segment[0].toUpperCase() + segment.slice(1) : segment,
+		)
+		.join(' ');
+}
+
+function readPaletteFamilies(): PaletteFamily[] {
+	const styles = getComputedStyle(document.documentElement);
+	const families = new Map<string, Set<string>>();
+
+	for (let index = 0; index < styles.length; index += 1) {
+		const propertyName = styles[index];
+		if (!propertyName.startsWith('--color-')) {
+			continue;
+		}
+
+		const colorName = propertyName.slice('--color-'.length);
+		if (ROLE_COLOR_VARIABLES.has(colorName)) {
+			continue;
+		}
+
+		const lastHyphenIndex = colorName.lastIndexOf('-');
+		if (lastHyphenIndex === -1) {
+			continue;
+		}
+
+		const familyName = colorName.slice(0, lastHyphenIndex);
+		const tokenName = colorName.slice(lastHyphenIndex + 1);
+		if (!familyName || !tokenName) {
+			continue;
+		}
+
+		if (!families.has(familyName)) {
+			families.set(familyName, new Set());
+		}
+
+		families.get(familyName)?.add(tokenName);
+	}
+
+	return Array.from(families.entries())
+		.map(([name, tokens]) => ({
+			name,
+			tokens: Array.from(tokens).sort(sortTokenNames),
+		}))
+		.sort((left, right) => left.name.localeCompare(right.name));
+}
 
 export function ColorSystemSection() {
+	const [paletteFamilies, setPaletteFamilies] = useState<PaletteFamily[]>([]);
+
+	useEffect(() => {
+		setPaletteFamilies(readPaletteFamilies());
+	}, []);
+
 	return (
 		<StyleguideSection
 			title='Color System'
 			icon={Palette}
-			description='Carefully crafted color palette with semantic meaning and accessibility in mind.'
-			badge='New'
+			description='Generated directly from your active theme tokens and semantic roles.'
+			badge='Live Tokens'
 		>
 			<div className='space-y-10'>
 				<div className='space-y-4'>
 					<div className='flex items-center gap-2'>
-						<h3 className='heading-5 text-foreground'>Primary Palette</h3>
-						<StyleguideBadge variant='brand'>Teal/Cyan</StyleguideBadge>
+						<h3 className='heading-5 text-foreground'>Semantic Roles</h3>
+						<StyleguideBadge variant='brand'>Theme Driven</StyleguideBadge>
 					</div>
 					<div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-						<StyleguideColorSwatch
-							name='Primary 500'
-							value='#14b8a6'
-							description='Main brand color'
-						/>
-						<StyleguideColorSwatch
-							name='Primary 600'
-							value='#0d9488'
-							description='Hover states'
-						/>
-						<StyleguideColorSwatch
-							name='Primary 50'
-							value='#f0fdfa'
-							description='Backgrounds'
-						/>
+						{CORE_ROLE_SWATCHES.map((swatch) => (
+							<StyleguideColorSwatch
+								key={swatch.token}
+								name={swatch.name}
+								token={swatch.token}
+								description={swatch.description}
+							/>
+						))}
 					</div>
 				</div>
 
 				<div className='space-y-4'>
-					<h3 className='heading-5 text-foreground'>Semantic Colors</h3>
-					<div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4'>
-						<StyleguideColorSwatch name='Success' value='#22c55e' />
-						<StyleguideColorSwatch name='Warning' value='#f59e0b' />
-						<StyleguideColorSwatch name='Error' value='#ef4444' />
-						<StyleguideColorSwatch name='Info' value='#3b82f6' />
-					</div>
-				</div>
-
-				<div className='space-y-4'>
-					<h3 className='heading-5 text-foreground'>Neutral Scale</h3>
-					<div className='grid grid-cols-5 gap-2 lg:grid-cols-10'>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-50 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>50</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-100 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>100</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-200 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>200</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-300 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>300</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-400 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>400</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-500 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>500</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-600 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>600</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-700 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>700</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-800 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>800</span>
-						</div>
-						<div className='flex flex-col items-center gap-2'>
-							<div
-								className={`h-16 w-full rounded-lg bg-neutral-900 shadow-sm ring-1 ring-black/5`}
-							/>
-							<span className='caption text-muted font-mono'>{900}</span>
-						</div>
+					<h3 className='heading-5 text-foreground'>Generated Palette Families</h3>
+					<p className='body-sm text-muted'>
+						Every <code className='font-mono'>colors.*</code> entry from your theme is exposed
+						here, including custom families like tertiary or brand-alt.
+					</p>
+					<div className='space-y-8'>
+						{paletteFamilies.map((family) => (
+							<div key={family.name} className='space-y-4'>
+								<div className='flex items-center gap-2'>
+									<h4 className='heading-6 text-foreground'>
+										{formatFamilyName(family.name)}
+									</h4>
+									<StyleguideBadge>{family.name}</StyleguideBadge>
+								</div>
+								<div className='grid gap-4 sm:grid-cols-2 xl:grid-cols-4'>
+									{family.tokens.map((token) => (
+										<StyleguideColorSwatch
+											key={`${family.name}-${token}`}
+											name={`${formatFamilyName(family.name)} ${token}`}
+											token={`--color-${family.name}-${token}`}
+										/>
+									))}
+								</div>
+							</div>
+						))}
 					</div>
 				</div>
 			</div>

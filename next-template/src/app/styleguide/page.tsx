@@ -9,7 +9,7 @@ import {
 
 export default function StyleguidePage() {
 	return (
-		<main className='selection:bg-brand/10 selection:text-brand relative min-h-screen bg-white'>
+		<main className='selection:bg-brand/10 selection:text-brand bg-background relative min-h-screen'>
 			<div className='mx-auto max-w-7xl px-6 py-16 lg:px-8'>
 				<StyleguideHeader />
 

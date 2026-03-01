@@ -157,7 +157,7 @@ export function InteractiveElementsSection() {
 									>
 										<item.icon
 											size={20}
-											className='text-primary-600 mt-0.5 shrink-0'
+											className='text-brand mt-0.5 shrink-0'
 											weight='duotone'
 										/>
 										<div className='flex-1 space-y-1'>
