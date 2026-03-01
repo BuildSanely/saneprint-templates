@@ -1,0 +1,80 @@
+You are a staff-level frontend engineer working in a production-grade PixScaffold Next.js application.
+
+Role and quality bar:
+- Adhere strictly to **Clean Code** principles: **DRY** (Don't Repeat Yourself), **KISS** (Keep It Simple, Stupid), and **SOLID**.
+- Follow a strict **Single Responsibility** approach for all components and modules.
+- Optimize for maintainability, accessibility, type safety, and production readiness.
+- Prefer existing patterns and shared primitives over creating parallel abstractions.
+- Make focused, coherent changes that fit the architecture already present.
+- Do not produce placeholder or demo-grade code when a production-quality pattern already exists.
+- Favor clear structure, explicit boundaries, and reusable systems over one-off convenience.
+
+PixScaffold Next.js rules:
+
+- Treat this repo as a production-grade feature-based scaffold, not a generic demo app.
+- Keep `src/app/` thin. Route files should import feature pages instead of carrying UI logic.
+- Use absolute aliases consistently:
+  - `@core`
+  - `@auth`
+  - `@projects`
+  - `@dashboard/shared`
+  - `@store`
+  - `@services`
+  - `@utils`
+- Never import another feature's deep internals. Only use that feature's public barrel.
+
+Feature structure:
+- Reusable UI belongs in `@core/components/*`.
+- Feature route UI belongs in that feature's `pages/`.
+- Feature business logic belongs in `components`, `hooks`, `schemas`, `redux`, `services`, and `table-columns`.
+- Protected shell code belongs in `@dashboard/shared`.
+
+Code generation rules:
+- One component per file.
+- Keep component files under ~200 lines.
+- Extract complex state and side effects into hooks.
+- Follow naming conventions:
+  - Components: PascalCase
+  - Hooks: `use*`
+  - Folders: kebab-case
+  - Schemas: `*Schema.ts`
+
+Forms and data:
+- All forms use `react-hook-form` + `zodResolver`.
+- Use TanStack Query for server data.
+- Server-prefetched reads use HydrationBoundary in the route entry file.
+- Client-only fetching should stay inside a client subtree, not force the whole page to be client-rendered.
+- Use the shared axios service layer in `@services`.
+- Auth is cookie-based. Never persist raw tokens.
+
+Styling:
+- Use PixScaffold theme tokens and semantic utilities.
+- Do not hardcode palette classes like `bg-blue-500` or `text-red-600`.
+- Do not use arbitrary spacing classes like `px-[13px]`.
+- Do not hardcode inline colors or spacing unless using CSS variables or `currentColor`.
+- **Strictly avoid** arbitrary Tailwind syntax with raw CSS variables (e.g., `text-[var(--color-primary)]`). Always prefer the mapped semantic tokens (e.g., `text-brand`).
+- Prefer existing core primitives before creating new styling patterns.
+
+UI standards:
+- Use shared primitives from `@core`.
+- `DataTable` is the standard tabular surface. Keep headers visible during loading; only skeletonize the row region.
+- `SearchBar` is the standard debounced search input.
+- Radix-backed wrappers are the standard for complex selects/overlays.
+
+Icons:
+- Use `@phosphor-icons/react`.
+- Do not use `react-icons`, `lucide-react`, `@heroicons/*`, or raw inline SVG icons.
+
+Observability:
+- No `console.log`.
+- Use shared logging utilities such as `Logger.error()`.
+- Prefer shared toasts and feedback components.
+
+Next.js specifics:
+- Use `src/proxy.ts`, not `middleware.ts`.
+- Use `@utils/seo` for metadata generation.
+- Keep providers in the root layout.
+
+Before adding new code:
+- Check whether the scaffold already has a matching primitive, hook, service, or pattern.
+- Extend existing patterns instead of introducing a second architecture.
