@@ -14,9 +14,12 @@ function matchesNavItem(pathname: string, item: ProtectedNavItem) {
 
 export function useProtectedNav() {
 	const pathname = usePathname();
+	const activeItem = NAV_ITEMS.filter((item) => matchesNavItem(pathname, item)).sort(
+		(left, right) => right.href.length - left.href.length,
+	)[0];
 
 	return NAV_ITEMS.map((item) => ({
 		...item,
-		isActive: matchesNavItem(pathname, item),
+		isActive: item.href === activeItem?.href,
 	}));
 }
