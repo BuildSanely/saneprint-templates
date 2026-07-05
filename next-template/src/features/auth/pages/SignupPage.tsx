@@ -1,6 +1,7 @@
-import { LinkAsButton } from '@core';
-import { SignupFlow } from '../components/SignupFlow';
 import AuthWrapper from '@/features/auth/components/AuthWrapper';
+import { LinkAsButton } from '@core';
+
+import { SignupFlow } from '../components/SignupFlow';
 
 export function SignupPage() {
 	return (
@@ -21,5 +22,3 @@ export function SignupPage() {
 		</AuthWrapper>
 	);
 }
-
-export default SignupPage;

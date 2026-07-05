@@ -1,9 +1,11 @@
 'use client';
 
-import * as Dialog from '@radix-ui/react-dialog';
 import { ReactNode, useState } from 'react';
-import { Button } from '../form/Button';
+
+import * as Dialog from '@radix-ui/react-dialog';
+
 import { Modal } from './Modal';
+import { Button } from '../form/Button';
 
 type ConfirmIntent = 'primary' | 'danger';
 

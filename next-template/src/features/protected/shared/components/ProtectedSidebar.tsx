@@ -1,10 +1,16 @@
 'use client';
 
-import { CaretLeft, CaretRight, SignOut, StarIcon } from '@phosphor-icons/react';
 import Link from 'next/link';
-import { cn } from '@utils/cn';
+
+import { CaretLeftIcon as CaretLeft } from '@phosphor-icons/react/dist/csr/CaretLeft';
+import { CaretRightIcon as CaretRight } from '@phosphor-icons/react/dist/csr/CaretRight';
+import { SignOutIcon as SignOut } from '@phosphor-icons/react/dist/csr/SignOut';
+import { StarIcon } from '@phosphor-icons/react/dist/csr/Star';
+
 import { useAuth } from '@auth';
 import { Button, IconButton } from '@core';
+import { cn } from '@utils/cn';
+
 import { useProtectedNav } from '../hooks/useProtectedNav';
 import { useSidebarState } from '../hooks/useSidebarState';
 

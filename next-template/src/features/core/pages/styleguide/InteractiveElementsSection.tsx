@@ -8,6 +8,7 @@ import {
 	Warning,
 	WarningCircle,
 } from '@phosphor-icons/react/dist/ssr';
+
 import {
 	Button,
 	Checkbox,
@@ -19,6 +20,7 @@ import {
 	ToastShowcase,
 	Tooltip,
 } from '@core';
+
 import { StyleguideBadge, StyleguideSection } from './StyleguidePrimitives';
 
 const activityItems = [

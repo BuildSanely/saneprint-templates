@@ -1,21 +1,24 @@
 'use client';
 
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useEffect } from 'react';
+
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+
 import { apiClient, ENDPOINTS } from '@services';
 import { useAppDispatch, useAppSelector } from '@store';
 import { Logger } from '@utils/logger';
-import {
-	clearDemoSession,
-	getDemoSessionUser,
-	isDemoSessionActive,
-} from '../utils/demoSession';
+
 import {
 	AuthUser,
 	clearAuth,
 	setAuthenticated,
 	setAuthLoading,
 } from '../redux/authSlice';
+import {
+	clearDemoSession,
+	getDemoSessionUser,
+	isDemoSessionActive,
+} from '../utils/demoSession';
 
 const AUTH_SESSION_QUERY_KEY = ['auth', 'session'] as const;
 

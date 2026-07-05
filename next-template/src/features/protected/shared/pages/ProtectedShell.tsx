@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+
+import { ProtectedFooter } from '../components/ProtectedFooter';
 import { ProtectedHeader } from '../components/ProtectedHeader';
 import { ProtectedSidebar } from '../components/ProtectedSidebar';
 
@@ -18,9 +20,10 @@ export function ProtectedShell({ children }: ProtectedShellProps) {
 			<div className='flex h-[calc(100vh)]'>
 				<ProtectedSidebar />
 
-				<main className='flex-1 overflow-auto'>
+				<main className='flex flex-1 flex-col overflow-auto'>
 					<ProtectedHeader />
-					<div className='px-6 py-4'>{children}</div>
+					<div className='flex-1 px-6 py-4'>{children}</div>
+					<ProtectedFooter />
 				</main>
 			</div>
 		</div>

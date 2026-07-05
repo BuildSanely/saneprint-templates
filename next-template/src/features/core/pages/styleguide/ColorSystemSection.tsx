@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Palette } from '@phosphor-icons/react';
+
+import { PaletteIcon as Palette } from '@phosphor-icons/react/dist/csr/Palette';
+
 import {
 	StyleguideBadge,
 	StyleguideColorSwatch,
@@ -139,7 +141,11 @@ export function ColorSystemSection() {
 	const [paletteFamilies, setPaletteFamilies] = useState<PaletteFamily[]>([]);
 
 	useEffect(() => {
-		setPaletteFamilies(readPaletteFamilies());
+		const animationFrame = requestAnimationFrame(() => {
+			setPaletteFamilies(readPaletteFamilies());
+		});
+
+		return () => cancelAnimationFrame(animationFrame);
 	}, []);
 
 	return (
@@ -170,8 +176,8 @@ export function ColorSystemSection() {
 				<div className='space-y-4'>
 					<h3 className='heading-5 text-foreground'>Generated Palette Families</h3>
 					<p className='body-sm text-muted'>
-						Every <code className='font-mono'>colors.*</code> entry from your theme is exposed
-						here, including custom families like tertiary or brand-alt.
+						Every <code className='font-mono'>colors.*</code> entry from your theme is
+						exposed here, including custom families like tertiary or brand-alt.
 					</p>
 					<div className='space-y-8'>
 						{paletteFamilies.map((family) => (

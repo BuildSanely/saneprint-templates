@@ -1,6 +1,7 @@
-import { LinkAsButton } from '@core';
-import { ForgotPasswordFlow } from '../components/ForgotPasswordFlow';
 import AuthWrapper from '@/features/auth/components/AuthWrapper';
+import { LinkAsButton } from '@core';
+
+import { ForgotPasswordFlow } from '../components/ForgotPasswordFlow';
 
 export function ForgotPasswordPage() {
 	return (
@@ -24,5 +25,3 @@ export function ForgotPasswordPage() {
 		</AuthWrapper>
 	);
 }
-
-export default ForgotPasswordPage;

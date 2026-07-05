@@ -1,6 +1,7 @@
 'use client';
 
 import { LinkAsButton } from '@core';
+
 import { ForgotPasswordRequestForm } from './ForgotPasswordRequestForm';
 import { ForgotPasswordVerifyForm } from './ForgotPasswordVerifyForm';
 import { ResetPasswordForm } from './ResetPasswordForm';

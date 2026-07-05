@@ -1,5 +1,6 @@
-import { Skeleton } from '../feedback/Skeleton';
 import { cn } from '@utils/cn';
+
+import { Skeleton } from '../feedback/Skeleton';
 
 interface DataTableSkeletonProps {
 	columnCount?: number;

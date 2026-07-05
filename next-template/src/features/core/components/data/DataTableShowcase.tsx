@@ -1,9 +1,10 @@
 'use client';
 
 import { startTransition, useMemo, useState } from 'react';
+
 import { DataTable, DataTableColumn, DataTableSortState } from './DataTable';
-import { Select } from '../form/Select';
 import { sortRows } from './sortRows';
+import { Select } from '../form/Select';
 
 interface ProjectRow {
 	id: string;

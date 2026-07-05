@@ -1,8 +1,11 @@
 'use client';
 
 import { FormEventHandler } from 'react';
+
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
+
 import { Button, Input } from '@core';
+
 import { ForgotPasswordRequestValues } from '../schemas/ForgotPasswordRequestSchema';
 
 interface ForgotPasswordRequestFormProps {

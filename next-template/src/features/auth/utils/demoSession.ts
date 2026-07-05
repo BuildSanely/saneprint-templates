@@ -1,14 +1,11 @@
-import { AuthUser } from '../redux/authSlice';
+import { clientEnv } from '@/config/client-env';
+
 import { DEMO_AUTH_CREDENTIALS } from '../constants/demoCredentials';
+import { AuthUser } from '../redux/authSlice';
 
 const DEMO_SESSION_STORAGE_KEY = 'pixscaffold_demo_session';
-const DEFAULT_AUTH_SESSION_COOKIE_NAME = '__pixscaffold_session';
-
 function getDemoSessionCookieName() {
-	return (
-		process.env.NEXT_PUBLIC_AUTH_SESSION_COOKIE_NAME ||
-		DEFAULT_AUTH_SESSION_COOKIE_NAME
-	);
+	return clientEnv.NEXT_PUBLIC_AUTH_SESSION_COOKIE_NAME;
 }
 
 export function isDemoSessionEnabled() {

@@ -1,4 +1,6 @@
-import { House, FolderSimple, Browser } from '@phosphor-icons/react';
+import { BrowserIcon as Browser } from '@phosphor-icons/react/dist/csr/Browser';
+import { FolderSimpleIcon as FolderSimple } from '@phosphor-icons/react/dist/csr/FolderSimple';
+import { HouseIcon as House } from '@phosphor-icons/react/dist/csr/House';
 
 export type ProtectedNavMatchMode = 'exact' | 'prefix';
 

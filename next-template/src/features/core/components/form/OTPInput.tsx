@@ -1,7 +1,9 @@
 'use client';
 
-import { OTPInput as BaseOTPInput } from 'input-otp';
 import { ReactNode, forwardRef } from 'react';
+
+import { OTPInput as BaseOTPInput } from 'input-otp';
+
 import { cn } from '@utils/cn';
 
 export interface OTPInputProps {

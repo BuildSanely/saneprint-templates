@@ -1,19 +1,13 @@
-const DEFAULT_API_BASE_URL = 'http://localhost:4000';
-
-function getBaseUrl(value?: string) {
-	return value?.trim() || DEFAULT_API_BASE_URL;
-}
+import { clientEnv } from '@/config/client-env';
 
 function withBaseUrl(baseUrl: string, path: string) {
 	return new URL(path, baseUrl).toString();
 }
 
-const API_BASE_URL = getBaseUrl(process.env.NEXT_PUBLIC_API_BASE_URL);
-
 export const SERVICE_BASE_URLS = {
-	core: API_BASE_URL,
-	auth: getBaseUrl(process.env.NEXT_PUBLIC_AUTH_API_BASE_URL),
-	users: getBaseUrl(process.env.NEXT_PUBLIC_USERS_API_BASE_URL),
+	core: clientEnv.NEXT_PUBLIC_API_BASE_URL,
+	auth: clientEnv.NEXT_PUBLIC_AUTH_API_BASE_URL,
+	users: clientEnv.NEXT_PUBLIC_USERS_API_BASE_URL,
 } as const;
 
 export const ENDPOINTS = {

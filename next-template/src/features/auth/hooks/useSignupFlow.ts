@@ -1,12 +1,16 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+
 import { apiClient, ENDPOINTS } from '@services';
 import { Logger } from '@utils/logger';
+
 import { AUTH_SESSION_QUERY_KEY } from './useAuth';
 import { useOtpCooldown } from './useOtpCooldown';
 import { SignupOtpFormValues, SignupOtpSchema } from '../schemas/SignupOtpSchema';

@@ -1,6 +1,7 @@
 'use client';
 
 import { RefObject, useEffect, useRef } from 'react';
+
 import { Virtualizer, useVirtualizer } from '@tanstack/react-virtual';
 
 interface UseDataTableVirtualizerOptions {

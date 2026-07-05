@@ -1,8 +1,11 @@
 'use client';
 
-import { CaretDown, Check } from '@phosphor-icons/react';
-import * as SelectPrimitive from '@radix-ui/react-select';
 import { CSSProperties, ReactNode, forwardRef, useId } from 'react';
+
+import { CaretDownIcon as CaretDown } from '@phosphor-icons/react/dist/csr/CaretDown';
+import { CheckIcon as Check } from '@phosphor-icons/react/dist/csr/Check';
+import * as SelectPrimitive from '@radix-ui/react-select';
+
 import { cn } from '@utils/cn';
 
 type SelectSize = 'sm' | 'md' | 'lg';

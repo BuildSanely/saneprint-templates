@@ -1,13 +1,4 @@
-import { LinkAsButton } from '@core';
-import {
-	ChartLine,
-	Cube,
-	FolderOpen,
-	RocketLaunch,
-	ShieldCheck,
-	Sparkle,
-	Users,
-} from '@phosphor-icons/react/dist/ssr';
+import { ChartLine, Cube, Users } from '@phosphor-icons/react/dist/ssr';
 
 export function DashboardHomePage() {
 	return (

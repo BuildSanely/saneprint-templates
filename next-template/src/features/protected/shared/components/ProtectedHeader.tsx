@@ -1,6 +1,6 @@
 'use client';
 
-import { User } from '@phosphor-icons/react';
+import { UserIcon as User } from '@phosphor-icons/react/dist/csr/User';
 
 import { useAuth } from '@auth';
 

@@ -1,4 +1,5 @@
 import { ArrowLeftIcon, ArrowRight } from '@phosphor-icons/react/dist/ssr';
+
 import { LinkAsButton } from '@core';
 
 export function StyleguideHeader() {
@@ -28,8 +29,8 @@ export function StyleguideHeader() {
 					Design Protocol
 				</h1>
 				<p className='body text-muted max-w-2xl text-xl leading-relaxed'>
-					A comprehensive, production-ready design system rendered from your generated theme
-					tokens and semantic roles.
+					A comprehensive, production-ready design system rendered from your generated
+					theme tokens and semantic roles.
 				</p>
 			</div>
 

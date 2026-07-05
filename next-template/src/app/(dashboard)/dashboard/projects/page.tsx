@@ -1,4 +1,5 @@
 import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query';
+
 import { ProjectsPage, projectsQueryOptions } from '@projects';
 import { createPageMetadata } from '@utils/seo';
 

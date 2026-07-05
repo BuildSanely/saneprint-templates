@@ -1,7 +1,5 @@
 'use client';
 
-import { MagnifyingGlass } from '@phosphor-icons/react';
-import debounce from 'lodash/debounce';
 import {
 	ChangeEvent,
 	ComponentPropsWithoutRef,
@@ -10,6 +8,10 @@ import {
 	useRef,
 	useState,
 } from 'react';
+
+import { MagnifyingGlassIcon as MagnifyingGlass } from '@phosphor-icons/react/dist/csr/MagnifyingGlass';
+import debounce from 'lodash/debounce';
+
 import { Input } from './Input';
 
 export interface SearchBarProps extends Omit<

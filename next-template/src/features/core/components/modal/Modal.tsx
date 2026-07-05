@@ -1,9 +1,12 @@
 'use client';
 
-import * as Dialog from '@radix-ui/react-dialog';
 import { ReactNode } from 'react';
-import { Button } from '@core';
+
+import * as Dialog from '@radix-ui/react-dialog';
+
 import { cn } from '@utils/cn';
+
+import { Button } from '../form/Button';
 
 export interface ModalProps {
 	trigger: ReactNode;

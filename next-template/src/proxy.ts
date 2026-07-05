@@ -1,10 +1,9 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-const AUTH_SESSION_COOKIE_NAME =
-	process.env.AUTH_SESSION_COOKIE_NAME ||
-	process.env.NEXT_PUBLIC_AUTH_SESSION_COOKIE_NAME ||
-	'__pixscaffold_session';
+import { serverEnv } from '@/config/server-env';
+
+const AUTH_SESSION_COOKIE_NAME = serverEnv.AUTH_SESSION_COOKIE_NAME;
 const PROTECTED_PATH_PREFIXES = ['/dashboard'] as const;
 const AUTH_ROUTE_PREFIXES = ['/login', '/signup'] as const;
 

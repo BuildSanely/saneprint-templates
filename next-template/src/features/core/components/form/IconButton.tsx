@@ -1,13 +1,17 @@
 'use client';
 
 import { ButtonHTMLAttributes, ReactNode, forwardRef } from 'react';
+
 import { cn } from '@utils/cn';
+
 import { UnstyledButton } from './UnstyledButton';
 
 type IconButtonSize = 'sm' | 'md';
 
-export interface IconButtonProps
-	extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> {
+export interface IconButtonProps extends Omit<
+	ButtonHTMLAttributes<HTMLButtonElement>,
+	'children'
+> {
 	icon: ReactNode;
 	size?: IconButtonSize;
 }

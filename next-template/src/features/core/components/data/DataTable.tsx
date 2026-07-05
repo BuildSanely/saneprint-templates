@@ -1,12 +1,18 @@
 'use client';
 
-import { ArrowsDownUp, CaretDown, CaretUp } from '@phosphor-icons/react';
 import { CSSProperties, ReactNode } from 'react';
+
+import { ArrowsDownUpIcon as ArrowsDownUp } from '@phosphor-icons/react/dist/csr/ArrowsDownUp';
+import { CaretDownIcon as CaretDown } from '@phosphor-icons/react/dist/csr/CaretDown';
+import { CaretUpIcon as CaretUp } from '@phosphor-icons/react/dist/csr/CaretUp';
+
+import { useDataTableVirtualizer } from '@core/hooks/useDataTableVirtualizer';
+
+import { cn } from '@utils/cn';
+
+import { DataTableSkeleton } from './DataTableSkeleton';
 import { Button } from '../form/Button';
 import { UnstyledButton } from '../form/UnstyledButton';
-import { DataTableSkeleton } from './DataTableSkeleton';
-import { useDataTableVirtualizer } from '@core/hooks/useDataTableVirtualizer';
-import { cn } from '@utils/cn';
 
 type DataTableMode = 'pagination' | 'infinite';
 type DataTableAlign = 'left' | 'center' | 'right';

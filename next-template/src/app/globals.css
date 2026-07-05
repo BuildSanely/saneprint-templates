@@ -27,7 +27,7 @@
 	--color-secondary-900: oklch(0.2 0.05 200);
 
 	/* Neutral - Clean grays */
-	--color-neutral-0: #ffffff;
+	--color-neutral-0: oklch(1 0 0);
 	--color-neutral-50: oklch(0.99 0 0);
 	--color-neutral-100: oklch(0.97 0 0);
 	--color-neutral-200: oklch(0.92 0 0);
@@ -38,7 +38,7 @@
 	--color-neutral-700: oklch(0.3 0 0);
 	--color-neutral-800: oklch(0.19 0 0);
 	--color-neutral-900: oklch(0.13 0 0);
-	--color-neutral-1000: #000000;
+	--color-neutral-1000: oklch(0 0 0);
 
 	/* Semantic Colors */
 	--color-success-500: oklch(0.698 0.176 142);
@@ -51,8 +51,8 @@
 	--color-info-600: oklch(0.52 0.17 255);
 
 	/* Layout colors */
-	--color-background: #ffffff;
-	--color-surface: #ffffff;
+	--color-background: oklch(1 0 0);
+	--color-surface: oklch(1 0 0);
 	--color-foreground: oklch(0.13 0 0);
 	--color-muted: oklch(0.52 0 0);
 	--color-border: oklch(0.92 0 0);
@@ -67,12 +67,12 @@
 	--color-danger-hover: oklch(0.55 0.2 29);
 
 	/* Text on colors */
-	--color-on-brand: #ffffff;
-	--color-on-accent: #ffffff;
-	--color-on-danger: #ffffff;
+	--color-on-brand: oklch(1 0 0);
+	--color-on-accent: oklch(1 0 0);
+	--color-on-danger: oklch(1 0 0);
 
 	/* Form inputs */
-	--color-input: #ffffff;
+	--color-input: oklch(1 0 0);
 	--color-input-border: oklch(0.86 0 0);
 	--color-focus-ring: oklch(0.7 0.14 180);
 	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
@@ -105,18 +105,18 @@
 	--text-body--line-height: 1.5;
 	--tracking-body: 0;
 	--font-weight-body: 400;
-	--text-bodySm: 0.875rem;
-	--text-bodySm--line-height: 1.5;
-	--tracking-bodySm: 0;
-	--font-weight-bodySm: 400;
+	--text-body-sm: 0.875rem;
+	--text-body-sm--line-height: 1.5;
+	--tracking-body-sm: 0;
+	--font-weight-body-sm: 400;
 	--text-label: 0.875rem;
 	--text-label--line-height: 1.4;
 	--tracking-label: 0.01em;
 	--font-weight-label: 600;
-	--text-labelSm: 0.75rem;
-	--text-labelSm--line-height: 1.35;
-	--tracking-labelSm: 0.01em;
-	--font-weight-labelSm: 600;
+	--text-label-sm: 0.75rem;
+	--text-label-sm--line-height: 1.35;
+	--tracking-label-sm: 0.01em;
+	--font-weight-label-sm: 600;
 	--text-caption: 0.75rem;
 	--text-caption--line-height: 1.4;
 	--tracking-caption: 0;
@@ -173,10 +173,10 @@
 }
 
 @utility body-sm {
-	font-size: var(--text-bodySm);
-	font-weight: var(--font-weight-bodySm);
-	line-height: var(--text-bodySm--line-height);
-	letter-spacing: var(--tracking-bodySm);
+	font-size: var(--text-body-sm);
+	font-weight: var(--font-weight-body-sm);
+	line-height: var(--text-body-sm--line-height);
+	letter-spacing: var(--tracking-body-sm);
 }
 
 @utility label {
@@ -187,10 +187,10 @@
 }
 
 @utility label-sm {
-	font-size: var(--text-labelSm);
-	font-weight: var(--font-weight-labelSm);
-	line-height: var(--text-labelSm--line-height);
-	letter-spacing: var(--tracking-labelSm);
+	font-size: var(--text-label-sm);
+	font-weight: var(--font-weight-label-sm);
+	line-height: var(--text-label-sm--line-height);
+	letter-spacing: var(--tracking-label-sm);
 }
 
 @utility caption {
@@ -355,6 +355,7 @@
 		box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-focus-ring) 25%, transparent);
 	}
 }
+
 /* theme end */
 
 * {
@@ -371,7 +372,7 @@ body {
 .loader {
 	width: 48px;
 	height: 48px;
-	border: 5px solid currentColor;
+	border: 5px solid currentcolor;
 	border-bottom-color: transparent;
 	border-radius: 50%;
 	display: inline-block;
@@ -383,6 +384,7 @@ body {
 	0% {
 		transform: rotate(0deg);
 	}
+
 	100% {
 		transform: rotate(360deg);
 	}

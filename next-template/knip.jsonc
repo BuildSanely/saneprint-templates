@@ -1,0 +1,27 @@
+{
+	"$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
+	"entry": [
+		"*.config.{js,cjs,mjs,ts}",
+		"eslint/**/*.mjs",
+		"src/app/**/*.{js,jsx,ts,tsx}",
+	],
+	"project": ["*.config.{js,cjs,mjs,ts}", "eslint/**/*.mjs", "src/**/*.{js,jsx,ts,tsx}"],
+	"ignoreDependencies": ["tailwindcss"],
+	"ignoreIssues": {
+		"eslint/project-plugin.mjs": ["exports"],
+		"eslint/saneprint-rules.mjs": ["exports"],
+		"src/features/auth/utils/demoSession.ts": ["exports"],
+		"src/features/core/components/**": ["exports", "types"],
+		"src/features/core/index.ts": ["exports", "types"],
+		"src/features/protected/projects/index.ts": ["exports", "types"],
+		"src/features/protected/projects/services/getProjects.ts": ["exports"],
+		"src/services/{endpoints,index}.ts": ["exports"],
+		"src/store/{index,rootReducer,store}.ts": ["exports", "types"],
+		"src/store/PersistProvider.tsx": ["exports"],
+		"src/utils/seo.ts": ["exports"],
+	},
+	"ignoreExportsUsedInFile": {
+		"interface": true,
+		"type": true,
+	},
+}

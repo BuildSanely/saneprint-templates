@@ -1,0 +1,30 @@
+export const importRules = {
+	'import/no-cycle': ['error', { ignoreExternal: true, maxDepth: 1 }],
+	'import/no-duplicates': 'error',
+	'import/no-self-import': 'error',
+	'import/no-useless-path-segments': ['error', { noUselessIndex: true }],
+	'import/first': 'error',
+	'import/newline-after-import': 'error',
+	'import/no-absolute-path': 'error',
+	'import/no-mutable-exports': 'error',
+	'import/no-named-default': 'error',
+	'import/no-webpack-loader-syntax': 'error',
+	'import/order': [
+		'error',
+		{
+			groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index'], 'type'],
+			pathGroups: [
+				{ pattern: 'react', group: 'external', position: 'before' },
+				{ pattern: 'react-dom', group: 'external', position: 'before' },
+				{ pattern: 'next', group: 'external', position: 'before' },
+				{ pattern: 'next/**', group: 'external', position: 'before' },
+				{ pattern: '@/config/**', group: 'internal', position: 'before' },
+				{ pattern: '@core/**', group: 'internal', position: 'before' },
+				{ pattern: '@features/**', group: 'internal', position: 'after' },
+			],
+			pathGroupsExcludedImportTypes: ['react'],
+			'newlines-between': 'always',
+			alphabetize: { order: 'asc', caseInsensitive: true },
+		},
+	],
+};

@@ -1,6 +1,7 @@
 'use client';
 
 import { Button, Input, LinkAsButton } from '@core';
+
 import { useLoginFlow } from '../hooks/useLoginFlow';
 
 export function LoginForm() {
@@ -45,7 +46,7 @@ export function LoginForm() {
 				Sign in with password
 			</Button>
 			{showDemoCredentials ? (
-				<div className='rounded-xl border border-border bg-background p-4'>
+				<div className='border-border bg-background rounded-xl border p-4'>
 					<div className='flex items-start justify-between gap-4'>
 						<div className='space-y-1'>
 							<p className='label text-foreground'>Demo credentials</p>

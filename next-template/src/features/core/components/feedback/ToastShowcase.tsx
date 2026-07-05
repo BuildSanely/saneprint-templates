@@ -1,7 +1,8 @@
 'use client';
 
-import { Button } from '../form/Button';
 import { notify } from '@utils/notify';
+
+import { Button } from '../form/Button';
 
 export function ToastShowcase() {
 	function showPromiseToast() {

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 
+import { clientEnv } from '@/config/client-env';
+
 const DEFAULT_SITE_NAME = 'name';
 const DEFAULT_SITE_DESCRIPTION = 'The Professional Next.js Scaffolding Tool';
-const DEFAULT_SITE_URL =
-	process.env.NEXT_PUBLIC_APP_URL?.trim() || 'http://localhost:3000';
+const DEFAULT_SITE_URL = clientEnv.NEXT_PUBLIC_APP_URL;
 
 export interface PageMetadataInput {
 	title: string;

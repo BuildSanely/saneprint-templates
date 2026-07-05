@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+
 import { NAV_ITEMS, ProtectedNavItem } from '../utils/navItems';
 
 function matchesNavItem(pathname: string, item: ProtectedNavItem) {

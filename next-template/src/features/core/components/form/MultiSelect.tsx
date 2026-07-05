@@ -1,12 +1,16 @@
 'use client';
 
-import { CaretDown, Check } from '@phosphor-icons/react';
-import * as Popover from '@radix-ui/react-popover';
 import { ReactNode, useId, useState } from 'react';
+
+import { CaretDownIcon as CaretDown } from '@phosphor-icons/react/dist/csr/CaretDown';
+import { CheckIcon as Check } from '@phosphor-icons/react/dist/csr/Check';
+import * as Popover from '@radix-ui/react-popover';
+
+import { cn } from '@utils/cn';
+
 import { Button } from './Button';
 import { SearchBar } from './SearchBar';
 import { UnstyledButton } from './UnstyledButton';
-import { cn } from '@utils/cn';
 
 export interface MultiSelectOption {
 	label: string;
@@ -119,8 +123,8 @@ export function MultiSelect({
 							hasError && 'border-danger',
 							disabled && 'cursor-not-allowed opacity-60',
 						)}
-						>
-							<span className='flex min-w-0 flex-1 flex-wrap items-center gap-1'>
+					>
+						<span className='flex min-w-0 flex-1 flex-wrap items-center gap-1'>
 							{visibleLabels.length ? (
 								visibleLabels.map((item) => (
 									<span

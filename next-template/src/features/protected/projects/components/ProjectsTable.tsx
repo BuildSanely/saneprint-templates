@@ -1,9 +1,11 @@
 'use client';
 
 import { useDeferredValue, useMemo, useState } from 'react';
+
 import { DataTable, DataTableSortState, SearchBar, Select, sortRows } from '@core';
-import { projectColumns } from '../table-columns/project-listing-columns';
+
 import { useProjects } from '../hooks/useProjects';
+import { projectColumns } from '../table-columns/project-listing-columns';
 
 const PAGE_SIZE = 12;
 

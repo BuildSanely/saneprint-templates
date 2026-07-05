@@ -1,21 +1,24 @@
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+
 import { apiClient, ENDPOINTS } from '@services';
 import { Logger } from '@utils/logger';
+
 import { AUTH_SESSION_QUERY_KEY } from './useAuth';
 import {
 	DEMO_AUTH_CREDENTIALS,
 	shouldShowDemoCredentials,
 } from '../constants/demoCredentials';
-import { createDemoSession } from '../utils/demoSession';
 import {
 	LoginPasswordFormValues,
 	LoginPasswordSchema,
 } from '../schemas/LoginPasswordSchema';
+import { createDemoSession } from '../utils/demoSession';
 
 export function useLoginFlow() {
 	const router = useRouter();

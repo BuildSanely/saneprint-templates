@@ -334,7 +334,7 @@ const saneprintRules = {
 	},
 };
 
-export const saneprintPlugin = {
+const saneprintPlugin = {
 	meta: {
 		name: 'eslint-plugin-saneprint',
 	},

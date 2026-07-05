@@ -1,7 +1,9 @@
 'use client';
 
-import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { ReactNode } from 'react';
+
+import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
+
 import { cn } from '@utils/cn';
 
 export interface DropdownMenuItem {

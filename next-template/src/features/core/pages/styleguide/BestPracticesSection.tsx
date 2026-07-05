@@ -1,4 +1,5 @@
 import { BookOpen, CheckCircle, WarningCircle } from '@phosphor-icons/react/dist/ssr';
+
 import { StyleguideSection } from './StyleguidePrimitives';
 
 const dos = [
@@ -23,14 +24,14 @@ export function BestPracticesSection() {
 			description='Guidelines for implementing the design system effectively.'
 		>
 			<div className='grid gap-6 lg:grid-cols-2'>
-				<div className='space-y-4 rounded-2xl border border-border bg-surface p-6'>
+				<div className='border-border bg-surface space-y-4 rounded-2xl border p-6'>
 					<div className='flex items-center gap-3'>
-						<div className='flex h-10 w-10 items-center justify-center rounded-full bg-brand/10 text-brand'>
+						<div className='bg-brand/10 text-brand flex h-10 w-10 items-center justify-center rounded-full'>
 							<CheckCircle size={22} weight='bold' />
 						</div>
 						<h4 className='heading-6 text-foreground'>Do&apos;s</h4>
 					</div>
-					<ul className='body-sm space-y-2 text-muted'>
+					<ul className='body-sm text-muted space-y-2'>
 						{dos.map((item) => (
 							<li key={item} className='flex items-start gap-2'>
 								<span className='text-brand'>•</span>
@@ -40,14 +41,14 @@ export function BestPracticesSection() {
 					</ul>
 				</div>
 
-				<div className='space-y-4 rounded-2xl border border-border bg-surface p-6'>
+				<div className='border-border bg-surface space-y-4 rounded-2xl border p-6'>
 					<div className='flex items-center gap-3'>
-						<div className='flex h-10 w-10 items-center justify-center rounded-full bg-danger/10 text-danger'>
+						<div className='bg-danger/10 text-danger flex h-10 w-10 items-center justify-center rounded-full'>
 							<WarningCircle size={22} weight='bold' />
 						</div>
 						<h4 className='heading-6 text-foreground'>Don&apos;ts</h4>
 					</div>
-					<ul className='body-sm space-y-2 text-muted'>
+					<ul className='body-sm text-muted space-y-2'>
 						{donts.map((item) => (
 							<li key={item} className='flex items-start gap-2'>
 								<span className='text-danger'>•</span>

@@ -1,6 +1,7 @@
-import { LinkAsButton } from '@core';
-import { LoginForm } from '../components/LoginForm';
 import AuthWrapper from '@/features/auth/components/AuthWrapper';
+import { LinkAsButton } from '@core';
+
+import { LoginForm } from '../components/LoginForm';
 
 export function LoginPage() {
 	return (
@@ -24,5 +25,3 @@ export function LoginPage() {
 		</AuthWrapper>
 	);
 }
-
-export default LoginPage;

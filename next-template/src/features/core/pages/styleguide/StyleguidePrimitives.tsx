@@ -1,9 +1,5 @@
 export type StyleguideBadgeVariant =
-	| 'neutral'
-	| 'brand'
-	| 'success'
-	| 'warning'
-	| 'danger';
+	'neutral' | 'brand' | 'success' | 'warning' | 'danger';
 
 export type StyleguideIcon = React.ComponentType<{
 	size?: number;
@@ -20,7 +16,8 @@ export function StyleguideBadge({
 }) {
 	const variants: Record<StyleguideBadgeVariant, React.CSSProperties> = {
 		neutral: {
-			backgroundColor: 'color-mix(in srgb, var(--color-border) 70%, var(--color-surface))',
+			backgroundColor:
+				'color-mix(in srgb, var(--color-border) 70%, var(--color-surface))',
 			color: 'var(--color-muted)',
 		},
 		brand: {
@@ -69,9 +66,7 @@ export function StyleguideColorSwatch({
 			<div className='flex flex-col gap-1'>
 				<p className='label text-foreground'>{name}</p>
 				<code className='caption text-muted font-mono'>{token}</code>
-				{description ? (
-					<p className='caption text-muted/70'>{description}</p>
-				) : null}
+				{description ? <p className='caption text-muted/70'>{description}</p> : null}
 			</div>
 		</div>
 	);

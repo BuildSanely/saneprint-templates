@@ -18,10 +18,7 @@ export function useSidebarState() {
 	function toggleSidebar() {
 		setIsCollapsed((currentValue) => {
 			const nextValue = !currentValue;
-			window.localStorage.setItem(
-				SIDEBAR_COLLAPSED_STORAGE_KEY,
-				String(nextValue),
-			);
+			window.localStorage.setItem(SIDEBAR_COLLAPSED_STORAGE_KEY, String(nextValue));
 			return nextValue;
 		});
 	}

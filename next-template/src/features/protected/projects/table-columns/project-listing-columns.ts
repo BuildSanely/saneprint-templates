@@ -1,5 +1,5 @@
-import type { DataTableColumn } from '@core';
 import type { ProjectRecord } from '../services/getProjects';
+import type { DataTableColumn } from '@core';
 
 export const projectColumns: DataTableColumn<ProjectRecord>[] = [
 	{
